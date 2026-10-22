@@ -2,245 +2,67 @@
 'use strict';
 
 // PRODUCT CATALOG
-var PRODUCTS = [
-    // Men's Oxford
-    {
-        id: 1, category: 'men',
-        type: "Men's Oxford",
-        name: 'MCGUIRE in Dark Brown',
-        price: 4784, originalPrice: 5980,
-        img: 'https://bristolshoes.ph/cdn/shop/files/MCGUIRE_BROWN_SIDE_510x@2x.progressive.png.jpg?v=1763541249',
-        imgs: [
-            'https://bristolshoes.ph/cdn/shop/files/MCGUIRE_BROWN_SIDE_510x@2x.progressive.png.jpg?v=1763541249',
-            'https://bristolshoes.ph/cdn/shop/files/MCGUIRE_BROWN_DUO_510x@2x.progressive.png.jpg?v=1763541249'
-        ],
-        sizes: [39, 40, 41, 42, 43, 45], unavailable: [44],
-        desc: 'Elevate your formal look with these sleek dark brown leather shoes. Subtle brogue perforations and smooth polished finish. Upper: cow nappa leather. Lined with pigskin leather.',
-        sale: true
-    },
-    {
-        id: 2, category: 'men',
-        type: "Men's Oxford",
-        name: 'MCGUIRE in Black',
-        price: 4784, originalPrice: 5980,
-        img: 'https://bristolshoes.ph/cdn/shop/files/MCGUIRE_BLACK_SIDE_510x@2x.progressive.png.jpg?v=1763540650',
-        imgs: [
-            'https://bristolshoes.ph/cdn/shop/files/MCGUIRE_BLACK_SIDE_510x@2x.progressive.png.jpg?v=1763540650',
-            'https://bristolshoes.ph/cdn/shop/files/MCGUIRE_BLACK_DUO_510x@2x.progressive.png.jpg?v=1763540672'
-        ],
-        sizes: [39, 40, 41, 42, 43, 44, 45], unavailable: [],
-        desc: 'Elevate your formal look with these sleek black leather shoes. Subtle brogue perforations and smooth polished finish. Open-lace construction for a comfortable fit.',
-        sale: true
-    },
-    {
-        id: 3, category: 'men',
-        type: "Men's Oxford",
-        name: 'BALFOUR in Brown',
-        price: 4495, originalPrice: null,
-        img: 'https://bristolshoes.ph/cdn/shop/files/BALFOUR_BROWN_sideview_510x@2x.progressive.jpg?v=1763535096',
-        imgs: [
-            'https://bristolshoes.ph/cdn/shop/files/BALFOUR_BROWN_sideview_510x@2x.progressive.jpg?v=1763535096',
-            'https://bristolshoes.ph/cdn/shop/files/BALFOUR_BROWN_duo_510x@2x.progressive.jpg?v=1763535096',
-            'https://bristolshoes.ph/cdn/shop/files/SOLE_PASEXY_NEW_510x@2x.progressive.jpg?v=1706518591'
-        ],
-        sizes: [39, 40, 41, 42, 43, 44, 45], unavailable: [],
-        desc: 'An Oxford in brown brush-off leather with an interesting lacing design. Effortlessly transforms from formal to casual. Upper: cow brush-off leather. Lined with pigskin leather.',
-        sale: false
-    },
-    // ── Men's Loafer ──
-    {
-        id: 4, category: 'men',
-        type: "Men's Loafer",
-        name: 'BEDFORD in Tan Brown',
-        price: 4495, originalPrice: null,
-        img: 'https://bristolshoes.ph/cdn/shop/files/BEDFORD_TAN_SIDE_510x@2x.progressive.png.jpg?v=1757397457',
-        imgs: [
-            'https://bristolshoes.ph/cdn/shop/files/BEDFORD_TAN_SIDE_510x@2x.progressive.png.jpg?v=1757397457',
-            'https://bristolshoes.ph/cdn/shop/files/BEDFORD_TAN_DUO_510x@2x.progressive.png.jpg?v=1757397457',
-            'https://bristolshoes.ph/cdn/shop/files/SOLE_RSO_510x@2x.progressive.png.jpg?v=1757395891'
-        ],
-        sizes: [39, 40, 41, 42, 43, 44, 45], unavailable: [],
-        desc: 'Handcrafted in Marikina by local artisans using the highest quality leather. Upper: cow nappa leather. Lined with pigskin leather. Outsole: rubber.',
-        sale: false
-    },
-    {
-        id: 5, category: 'men',
-        type: "Men's Loafer",
-        name: 'FIYERO in Black',
-        price: 5295, originalPrice: null,
-        img: 'https://bristolshoes.ph/cdn/shop/files/FIYERO_BLACK_sideview_510x@2x.progressive.png.jpg?v=1763964977',
-        imgs: [
-            'https://bristolshoes.ph/cdn/shop/files/FIYERO_BLACK_sideview_510x@2x.progressive.png.jpg?v=1763964977',
-            'https://bristolshoes.ph/cdn/shop/files/FIYERO_BLACK_duo_510x@2x.progressive.png.jpg?v=1763964977',
-            'https://bristolshoes.ph/cdn/shop/files/SOLE_LEATHER_510x@2x.progressive.png.jpg?v=1757400779'
-        ],
-        sizes: [39, 40, 41, 42, 43, 44, 45], unavailable: [],
-        desc: 'A polished leather monk strap with a sleek moc-toe design and standout silver buckle. Blends classic sophistication with modern flair. Perfect for formal events and office attire.',
-        sale: false
-    },
-    {
-        id: 6, category: 'men',
-        type: "Men's Loafer",
-        name: 'FIYERO in Brown',
-        price: 5295, originalPrice: null,
-        img: 'https://bristolshoes.ph/cdn/shop/files/FIYERO_BROWN_sideview_510x@2x.progressive.png.jpg?v=1763965981',
-        imgs: [
-            'https://bristolshoes.ph/cdn/shop/files/FIYERO_BROWN_sideview_510x@2x.progressive.png.jpg?v=1763965981',
-            'https://bristolshoes.ph/cdn/shop/files/FIYERO_BROWN_duo_510x@2x.progressive.png.jpg?v=1763965981',
-            'https://bristolshoes.ph/cdn/shop/files/SOLE_LEATHER_BROWN_UPPER_510x@2x.progressive.png.jpg?v=1757401165'
-        ],
-        sizes: [39, 40, 41, 42, 43, 44, 45], unavailable: [],
-        desc: 'A polished leather monk strap in warm brown with a standout silver buckle. Blends classic sophistication with modern flair.',
-        sale: false
-    },
-    // ── Women's Loafer ──
-    {
-        id: 7, category: 'women',
-        type: "Women's Loafer",
-        name: 'ISABELLA in Black',
-        price: 3995, originalPrice: null,
-        img: 'https://bristolshoes.ph/cdn/shop/files/ISABELLA_BLACK_sideview_510x@2x.progressive.jpg?v=1706086338',
-        imgs: [
-            'https://bristolshoes.ph/cdn/shop/files/ISABELLA_BLACK_sideview_510x@2x.progressive.jpg?v=1706086338',
-            'https://bristolshoes.ph/cdn/shop/files/ISABELLA_BLACK_DUO_510x@2x.progressive.jpg?v=1706086348',
-            'https://bristolshoes.ph/cdn/shop/files/ISABELLA_BLACK_top_510x@2x.progressive.jpg?v=1706086578',
-            'https://bristolshoes.ph/cdn/shop/files/ISABELLA_BLACK_zoomed_510x@2x.progressive.jpg?v=1706086798'
-        ],
-        sizes: [35, 36, 37, 38, 39, 40], unavailable: [],
-        desc: 'Look sharp and stay comfortable in the Isabella in Black. Handcrafted in Marikina by local artisans using the highest quality leather. All-day comfort you can depend on.',
-        sale: false
-    },
-    {
-        id: 8, category: 'women',
-        type: "Women's Loafer",
-        name: 'ATHENA in Maroon',
-        price: 3995, originalPrice: null,
-        img: 'https://bristolshoes.ph/cdn/shop/files/ATHENAMSIDE_510x@2x.progressive.jpg?v=1702292746',
-        imgs: [
-            'https://bristolshoes.ph/cdn/shop/files/ATHENAMSIDE_510x@2x.progressive.jpg?v=1702292746',
-            'https://bristolshoes.ph/cdn/shop/files/ATHENAMDUO_510x@2x.progressive.jpg?v=1702292746',
-            'https://bristolshoes.ph/cdn/shop/files/ATHENA_Maroon_zoomed_510x@2x.progressive.jpg?v=1702293144',
-            'https://bristolshoes.ph/cdn/shop/files/SOLE_LADIES_SEMI-BULKY_70c773e0-d6d7-4615-a471-d06fc94c271d_510x@2x.progressive.jpg?v=1702292775'
-        ],
-        sizes: [35, 36, 37, 38, 39, 40], unavailable: [],
-        desc: 'A stylish penny loafer that captures attention and complements with just one look. Handcrafted in Marikina from the highest quality leather.',
-        sale: false
-    },
-    {
-        id: 9, category: 'women',
-        type: "Women's Loafer",
-        name: 'ASHANTI in Black',
-        price: 4295, originalPrice: null,
-        img: 'https://bristolshoes.ph/cdn/shop/files/ASHANTI_K_sideview_510x@2x.progressive.jpg?v=1700119783',
-        imgs: [
-            'https://bristolshoes.ph/cdn/shop/files/ASHANTI_K_sideview_510x@2x.progressive.jpg?v=1700119783',
-            'https://bristolshoes.ph/cdn/shop/files/ASHANTI_K_duo_510x@2x.progressive.jpg?v=1700119783',
-            'https://bristolshoes.ph/cdn/shop/files/ASHANTI_K_z_510x@2x.progressive.jpg?v=1700119772',
-            'https://bristolshoes.ph/cdn/shop/files/SOLE_LADIES_SEMI-BULKY_ae73c166-d27d-44e7-a5bb-121c97920c84_510x@2x.progressive.jpg?v=1700119784'
-        ],
-        sizes: [35, 36, 37, 38, 39, 40], unavailable: [],
-        desc: 'A modern twist to the classic penny loafer. Color-blocking design makes a retro statement while the lug soles give it a modern edge. Handcrafted in Marikina.',
-        sale: false
-    },
-    {
-        id: 10, category: 'women',
-        type: "Women's Loafer",
-        name: 'ASHANTI in Black & Red',
-        price: 4295, originalPrice: null,
-        img: 'https://bristolshoes.ph/cdn/shop/files/ASHANTI_KR_sideview_510x@2x.progressive.jpg?v=1700038433',
-        imgs: [
-            'https://bristolshoes.ph/cdn/shop/files/ASHANTI_KR_sideview_510x@2x.progressive.jpg?v=1700038433',
-            'https://bristolshoes.ph/cdn/shop/files/ASHANTI_KR_duo_510x@2x.progressive.jpg?v=1700038433',
-            'https://bristolshoes.ph/cdn/shop/files/ASHANTI_KR_z_510x@2x.progressive.jpg?v=1700038375',
-            'https://bristolshoes.ph/cdn/shop/files/SOLE_LADIES_SEMI-BULKY_86feca79-be0e-4baa-b693-de5aed184e23_510x@2x.progressive.jpg?v=1700038657'
-        ],
-        sizes: [35, 36, 37, 38, 39, 40], unavailable: [38],
-        desc: 'Bold color-blocking penny loafer in black and red. Retro design meets modern lug soles. Handcrafted in Marikina.',
-        sale: false
-    },
-    // ── Women's Oxford ──
-    {
-        id: 11, category: 'women',
-        type: "Women's Oxford",
-        name: 'LUCILLE in Black',
-        price: 4295, originalPrice: null,
-        img: 'https://bristolshoes.ph/cdn/shop/files/LUCILLE_BLACK_sideview_510x@2x.progressive.jpg?v=1706084670',
-        imgs: [
-            'https://bristolshoes.ph/cdn/shop/files/LUCILLE_BLACK_sideview_510x@2x.progressive.jpg?v=1706084670',
-            'https://bristolshoes.ph/cdn/shop/files/LUCILLE_BLACK_DUO_510x@2x.progressive.jpg?v=1706084670',
-            'https://bristolshoes.ph/cdn/shop/files/LUCILLE_BLACK_ZOOMED_510x@2x.progressive.jpg?v=1706084665',
-            'https://bristolshoes.ph/cdn/shop/files/LUCILLE_BLACK_TOP_510x@2x.progressive.jpg?v=1706084838'
-        ],
-        sizes: [35, 36, 37, 38, 39, 40], unavailable: [],
-        desc: 'Simple yet sophisticated the Lucille makes sure you stand apart from the crowd. Quality materials offer all-day comfort. Handcrafted in Marikina.',
-        sale: false
-    },
-    // Women's Mule 
-    {
-        id: 12, category: 'women',
-        type: "Women's Mule",
-        name: 'CHARLIZE in Black',
-        price: 3795, originalPrice: null,
-        img: 'https://bristolshoes.ph/cdn/shop/files/CHARLIZE_BLACK_SIDEVIEW_510x@2x.progressive.jpg?v=1692082976',
-        imgs: [
-            'https://bristolshoes.ph/cdn/shop/files/CHARLIZE_BLACK_SIDEVIEW_510x@2x.progressive.jpg?v=1692082976',
-            'https://bristolshoes.ph/cdn/shop/files/CHARLIZE_BLACK_DUO_510x@2x.progressive.jpg?v=1692085979',
-            'https://bristolshoes.ph/cdn/shop/files/CHARLIZE_BLACK_ZOOMED_510x@2x.progressive.jpg?v=1692085979'
-        ],
-        sizes: [35, 36, 37, 38, 39, 40], unavailable: [],
-        desc: 'The perfect shoe for a stylish yet comfortable slip-on. Simple and relaxed design with effortless style. Handcrafted in Marikina.',
-        sale: false
-    }
-];
+var PRODUCTS = window.BRISTOL_PRODUCTS || [];
 
+// The cart belongs to the signed-in account and is stored in MySQL.
+var CART = [];
+function getCart() { return CART; }
+function signInForCart(pending) {
+    if (pending) sessionStorage.setItem('bristol_pending_action', JSON.stringify(pending));
+    window.location.href = 'login.php?next=products.php';
+}
 
-// CART SYSTEM
-function getCart() {
-    try { return JSON.parse(localStorage.getItem('bristol_cart') || '[]'); }
-    catch (e) { return []; }
-}
-function saveCart(cart) {
-    localStorage.setItem('bristol_cart', JSON.stringify(cart));
-}
-function addToCart(productId, size) {
-    var cart = getCart();
-    var product = PRODUCTS.find(function (p) { return p.id === productId; });
-    if (!product) return;
-    var key = productId + '-' + size;
-    var existing = cart.find(function (i) { return i.key === key; });
-    if (existing) {
-        existing.qty += 1;
-    } else {
-        cart.push({
-            key: key,
-            id: productId,
-            name: product.name,
-            type: product.type,
-            price: product.price,
-            size: size,
-            img: product.img,
-            qty: 1
-        });
-    }
-    saveCart(cart);
+async function cartRequest(action, details) {
+    if (!window.BRISTOL_AUTH) { signInForCart(); return; }
+    var response = await fetch('process_cart.php', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json', 'X-CSRF-Token': window.BRISTOL_CSRF},
+        body: JSON.stringify(Object.assign({action: action}, details || {}))
+    });
+    var result = await response.json();
+    if (!response.ok) throw new Error(result.error || 'Could not update your cart.');
+    CART = result.items;
     updateCartBadge();
+    renderCartSidebar();
+}
+
+async function loadCart() {
+    if (!window.BRISTOL_AUTH) return;
+    try {
+        var response = await fetch('process_cart.php');
+        if (!response.ok) throw new Error('Could not load your cart.');
+        CART = (await response.json()).items;
+        updateCartBadge();
+    } catch (error) { showShopError(error.message); }
+}
+
+function showShopError(message) {
+    var sidebar = document.getElementById('cart-sidebar');
+    var box = document.getElementById(sidebar && sidebar.classList.contains('open') ? 'cart-error' : 'shop-error');
+    if (!box) return;
+    box.textContent = message;
+    box.hidden = false;
+}
+
+async function addToCart(productId, size) {
+    if (!window.BRISTOL_AUTH) { signInForCart({action: 'add', id: productId, size: size}); return false; }
+    await cartRequest('add', {id: productId, size: size});
     animateCartIcon();
+    return true;
 }
-function removeFromCart(key) {
-    var cart = getCart().filter(function (i) { return i.key !== key; });
-    saveCart(cart);
-    updateCartBadge();
-    renderCartSidebar();
-}
-function changeQty(key, delta) {
-    var cart = getCart();
-    var item = cart.find(function (i) { return i.key === key; });
+async function removeFromCart(key) {
+    var item = CART.find(function (row) { return row.key === key; });
     if (!item) return;
-    item.qty += delta;
-    if (item.qty <= 0) cart = cart.filter(function (i) { return i.key !== key; });
-    saveCart(cart);
-    updateCartBadge();
-    renderCartSidebar();
+    try { await cartRequest('remove', {id: item.id, size: item.size}); }
+    catch (error) { showShopError(error.message); }
+}
+async function changeQty(key, delta) {
+    var item = CART.find(function (row) { return row.key === key; });
+    if (!item) return;
+    try {
+        await cartRequest(item.qty + delta < 1 ? 'remove' : 'set',
+            {id: item.id, size: item.size, qty: Math.min(10, item.qty + delta)});
+    } catch (error) { showShopError(error.message); }
 }
 function cartTotal() {
     return getCart().reduce(function (sum, i) { return sum + i.price * i.qty; }, 0);
@@ -266,6 +88,11 @@ function animateCartIcon() {
 
 // RENDER PRODUCT GRID
 function formatPrice(n) { return '₱' + n.toLocaleString('en-PH'); }
+function escapeHtml(value) {
+    return String(value).replace(/[&<>"']/g, function (char) {
+        return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[char];
+    });
+}
 
 function renderProducts() {
     var grid = document.getElementById('product-grid');
@@ -284,22 +111,29 @@ function renderProducts() {
             return p.name.toLowerCase().includes(query) || p.type.toLowerCase().includes(query);
         });
     }
+    list = list.slice();
+    var sort = document.getElementById('product-sort').value;
+    if (sort === 'price-low') list.sort(function (a, b) { return a.price - b.price; });
+    if (sort === 'price-high') list.sort(function (a, b) { return b.price - a.price; });
+    if (sort === 'name') list.sort(function (a, b) { return a.name.localeCompare(b.name); });
+    document.getElementById('product-count').textContent = list.length + (list.length === 1 ? ' product' : ' products');
 
     if (list.length === 0) {
-        grid.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--text-muted);">No products found matching your search.</div>';
+        grid.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--text-muted);">' +
+            (window.BRISTOL_CATALOG_ERROR ? 'Products are temporarily unavailable. Please try again later.' : 'No products found matching your search.') + '</div>';
         return;
     }
 
     grid.innerHTML = list.map(function (p) {
         var badge = p.sale ? '<span class="p-badge">SALE</span>' : '';
         var originalPrice = p.originalPrice ? '<s class="p-original">' + formatPrice(p.originalPrice) + '</s> ' : '';
-        return '<div class="product" data-id="' + p.id + '" onclick="openModal(' + p.id + ')">'
+        return '<div class="product" role="button" tabindex="0" aria-label="View ' + escapeHtml(p.name) + '" data-id="' + p.id + '" onclick="openModal(' + p.id + ')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();openModal(' + p.id + ')}">'
             + badge
-            + '<div class="product-thumb"><img src="' + p.img + '" alt="' + p.name + '" onerror="this.src=\'images/product_mens_1.png\'">'
+            + '<div class="product-thumb"><img src="' + escapeHtml(p.img) + '" alt="' + escapeHtml(p.name) + '" loading="lazy" onerror="this.src=\'images/product_mens_1.png\'">'
             + '<div class="product-hover-overlay"><span>Quick View</span></div></div>'
             + '<div class="product-info">'
-            + '<small>' + p.type + '</small>'
-            + '<h3>' + p.name + '</h3>'
+            + '<small>' + escapeHtml(p.type) + '</small>'
+            + '<h3>' + escapeHtml(p.name) + '</h3>'
             + '<div class="p-price">' + originalPrice + '<strong>' + formatPrice(p.price) + '</strong></div>'
             + '</div></div>';
     }).join('');
@@ -312,7 +146,9 @@ function initFilters() {
     tabs.forEach(function (tab) {
         tab.addEventListener('click', function () {
             tabs.forEach(function (t) { t.classList.remove('active'); });
+            tabs.forEach(function (t) { t.setAttribute('aria-pressed', 'false'); });
             tab.classList.add('active');
+            tab.setAttribute('aria-pressed', 'true');
             renderProducts();
         });
     });
@@ -323,6 +159,7 @@ function initFilters() {
             renderProducts();
         });
     }
+    document.getElementById('product-sort').addEventListener('change', renderProducts);
 }
 
 
@@ -358,22 +195,22 @@ function openModal(id) {
 
     // Thumbnail strip
     var thumbs = p.imgs.map(function (src, i) {
-        return '<img class="modal-thumb' + (i === 0 ? ' active' : '') + '" src="' + src + '" alt="" onerror="this.src=\'images/product_mens_1.png\'" onclick="switchModalImg(this, \'' + src + '\')">';
+        return '<img class="modal-thumb' + (i === 0 ? ' active' : '') + '" src="' + escapeHtml(src) + '" alt="" onerror="this.src=\'images/product_mens_1.png\'" onclick="switchModalImg(this, this.src)">';
     }).join('');
 
     modal.querySelector('.modal-body').innerHTML =
         '<div class="modal-imgs">'
-        + '<img id="modal-main-img" src="' + p.imgs[0] + '" alt="' + p.name + '" onerror="this.src=\'images/product_mens_1.png\'">'
+        + '<img id="modal-main-img" src="' + escapeHtml(p.imgs[0]) + '" alt="' + escapeHtml(p.name) + '" onerror="this.src=\'images/product_mens_1.png\'">'
         + '<div class="modal-thumbs">' + thumbs + '</div>'
         + '</div>'
         + '<div class="modal-details">'
         + saleBadge
-        + '<p class="modal-type">' + p.type + '</p>'
-        + '<h2 class="modal-name">' + p.name + '</h2>'
+        + '<p class="modal-type">' + escapeHtml(p.type) + '</p>'
+        + '<h2 class="modal-name">' + escapeHtml(p.name) + '</h2>'
         + '<div class="modal-price">' + originalLine + '<span class="modal-price-main">' + formatPrice(p.price) + '</span></div>'
         + saveLine
-        + '<p class="modal-desc">' + p.desc + '</p>'
-        + '<div class="modal-sizes"><p class="modal-size-label">SIZE</p>'
+        + '<p class="modal-desc">' + escapeHtml(p.desc) + '</p>'
+        + '<div class="modal-sizes"><p class="modal-size-label">EU SIZE <button type="button" class="size-guide-link" onclick="openSizeGuide()">Size guide</button></p>'
         + '<div class="size-grid">' + sizeBtns + '</div></div>'
         + '<p id="modal-size-err" class="modal-size-err"></p>'
         + '<button class="modal-atc-btn" onclick="modalAddToCart()">Add to Cart</button>'
@@ -405,19 +242,45 @@ function closeModal() {
     document.body.style.overflow = '';
 }
 
-function modalAddToCart() {
+function openSizeGuide() {
+    if (!currentProduct) return;
+    var sizes = currentProduct.sizes.filter(function (size) {
+        return !currentProduct.unavailable.includes(size);
+    }).join(', ');
+    document.getElementById('size-guide-available').textContent =
+        'Available EU sizes for ' + currentProduct.name + ': ' + sizes + '.';
+    document.getElementById('size-guide-modal').classList.add('open');
+    document.querySelector('#size-guide-modal .modal-close').focus();
+}
+
+function closeSizeGuide() {
+    document.getElementById('size-guide-modal').classList.remove('open');
+    var link = document.querySelector('#product-modal .size-guide-link');
+    if (link) link.focus();
+}
+
+async function modalAddToCart() {
     if (!selectedSize) {
         document.getElementById('modal-size-err').textContent = 'Please select a size first.';
         return;
     }
-    addToCart(currentProduct.id, selectedSize);
-    closeModal();
-    openCartSidebar();
+    try {
+        if (await addToCart(currentProduct.id, selectedSize)) {
+            closeModal();
+            openCartSidebar();
+        }
+    } catch (error) {
+        document.getElementById('modal-size-err').textContent = error.message;
+    }
 }
 
 function modalBuyNow() {
     if (!selectedSize) {
         document.getElementById('modal-size-err').textContent = 'Please select a size first.';
+        return;
+    }
+    if (!window.BRISTOL_AUTH) {
+        signInForCart({action: 'buy_now', id: currentProduct.id, size: selectedSize});
         return;
     }
     var product = PRODUCTS.find(function (p) { return p.id === currentProduct.id; });
@@ -457,16 +320,18 @@ function renderCartSidebar() {
     if (!list) return;
 
     if (cart.length === 0) {
-        list.innerHTML = '<div class="cart-empty"><span>👟</span><p>Your cart is empty.</p><a href="#" onclick="closeCartSidebar()">Continue Shopping</a></div>';
+        list.innerHTML = window.BRISTOL_AUTH
+            ? '<div class="cart-empty"><p>Your cart is empty.</p><a href="#" onclick="closeCartSidebar()">Continue Shopping</a></div>'
+            : '<div class="cart-empty"><p>Sign in to save your picks.</p><a href="login.php?next=products.php">Sign in or create an account</a></div>';
         footer.style.display = 'none';
         return;
     }
 
     list.innerHTML = cart.map(function (item) {
         return '<div class="cart-item">'
-            + '<img src="' + item.img + '" alt="' + item.name + '" onerror="this.src=\'images/product_mens_1.png\'">'
+            + '<img src="' + escapeHtml(item.img) + '" alt="' + escapeHtml(item.name) + '" onerror="this.src=\'images/product_mens_1.png\'">'
             + '<div class="cart-item-info">'
-            + '<p class="ci-name">' + item.name + '</p>'
+            + '<p class="ci-name">' + escapeHtml(item.name) + '</p>'
             + '<p class="ci-size">Size: ' + item.size + '</p>'
             + '<p class="ci-price">' + formatPrice(item.price) + '</p>'
             + '</div>'
@@ -486,12 +351,14 @@ function renderCartSidebar() {
 
 // CHECKOUT
 function openCheckout(isBuyNow) {
+    if (!window.BRISTOL_AUTH) { signInForCart(); return; }
+    if (!isBuyNow && !getCart().length) { showShopError('Your cart is empty.'); return; }
     var itemsList = document.getElementById('checkout-items-list');
     var sub = 0;
 
     if (isBuyNow && buyNowItem) {
         if (itemsList) {
-            itemsList.innerHTML = '<div class="summary-row"><span>' + buyNowItem.name + ' (x1) sz:' + buyNowItem.size + '</span><span>' + formatPrice(buyNowItem.price) + '</span></div>';
+            itemsList.innerHTML = '<div class="summary-row"><span>' + escapeHtml(buyNowItem.name) + ' (x1) sz:' + buyNowItem.size + '</span><span>' + formatPrice(buyNowItem.price) + '</span></div>';
         }
         sub = buyNowItem.price;
     } else {
@@ -499,7 +366,7 @@ function openCheckout(isBuyNow) {
         var cart = getCart();
         if (itemsList) {
             itemsList.innerHTML = cart.map(function (i) {
-                return '<div class="summary-row"><span>' + i.name + ' (x' + i.qty + ') sz:' + i.size + '</span><span>' + formatPrice(i.price * i.qty) + '</span></div>';
+                return '<div class="summary-row"><span>' + escapeHtml(i.name) + ' (x' + i.qty + ') sz:' + i.size + '</span><span>' + formatPrice(i.price * i.qty) + '</span></div>';
             }).join('');
         }
         sub = cartTotal();
@@ -508,10 +375,31 @@ function openCheckout(isBuyNow) {
     var subtotalEl = document.getElementById('checkout-subtotal');
     var totalEl = document.getElementById('checkout-total');
     if (subtotalEl) subtotalEl.textContent = formatPrice(sub);
-    if (totalEl) totalEl.textContent = formatPrice(sub + 150);
+    if (totalEl) totalEl.textContent = formatPrice(sub + window.BRISTOL_SHIPPING);
     closeCartSidebar();
     document.getElementById('checkout-modal').classList.add('open');
     document.body.style.overflow = 'hidden';
+}
+
+async function restorePendingAction() {
+    if (!window.BRISTOL_AUTH) return;
+    var saved = sessionStorage.getItem('bristol_pending_action');
+    if (!saved) return;
+    sessionStorage.removeItem('bristol_pending_action');
+    try {
+        var pending = JSON.parse(saved);
+        var product = PRODUCTS.find(function (p) { return p.id === Number(pending.id); });
+        var size = Number(pending.size);
+        if (!product || !product.sizes.includes(size) || product.unavailable.includes(size)) return;
+        if (pending.action === 'add') {
+            await cartRequest('add', {id: product.id, size: size});
+            openCartSidebar();
+        } else if (pending.action === 'buy_now') {
+            buyNowItem = {id: product.id, name: product.name, type: product.type,
+                price: product.price, size: size, img: product.img, qty: 1};
+            openCheckout(true);
+        }
+    } catch (error) { showShopError('Could not restore your selection. Please try again.'); }
 }
 function closeCheckout() {
     document.getElementById('checkout-modal').classList.remove('open');
@@ -520,25 +408,66 @@ function closeCheckout() {
 function selectPayment(el) {
     document.querySelectorAll('.pay-option').forEach(function (o) { o.classList.remove('selected'); });
     el.classList.add('selected');
+    el.querySelector('input[type="radio"]').checked = true;
 }
 
-function placeOrder() {
-    var selected = document.querySelector('.pay-option.selected');
-    if (!selected) { alert('Please select a payment method.'); return; }
-    
-    if (buyNowItem) {
-        buyNowItem = null;
-    } else {
-        saveCart([]);
-        updateCartBadge();
-    }
+function initAddressSelects() {
+    var province = document.getElementById('checkout-province');
+    var city = document.getElementById('checkout-city');
+    if (!province || !city) return;
 
-    document.getElementById('checkout-form').reset();
-    closeCheckout();
-    var toast = document.getElementById('order-toast');
-    if (toast) {
+    province.addEventListener('change', function () {
+        var choices = window.BRISTOL_LOCATIONS[province.value] || [];
+        city.replaceChildren(new Option(choices.length ? 'Select city / municipality' : 'Select province first', ''));
+        choices.forEach(function (name) { city.add(new Option(name, name)); });
+        city.disabled = choices.length === 0;
+    });
+}
+
+async function placeOrder() {
+    var form = document.getElementById('checkout-form');
+    var errorBox = document.getElementById('checkout-error');
+    var button = form.querySelector('button[type="submit"]');
+    var fields = Object.fromEntries(new FormData(form));
+    var items = buyNowItem ? [buyNowItem] : getCart();
+    if (!fields.payment_method || !items.length) {
+        errorBox.textContent = 'Choose a payment method and add at least one item.';
+        errorBox.hidden = false;
+        return;
+    }
+    errorBox.hidden = true;
+    button.disabled = true;
+    button.textContent = 'Saving order…';
+    try {
+        var response = await fetch('process_order.php', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json', 'X-CSRF-Token': window.BRISTOL_CSRF},
+            body: JSON.stringify(Object.assign(fields, {
+                mode: buyNowItem ? 'buy_now' : 'cart',
+                items: items.map(function (item) {
+                    return {id: item.id, size: item.size, qty: item.qty};
+                })
+            }))
+        });
+        var result = await response.json();
+        if (!response.ok) throw new Error(result.error || 'Could not save your order.');
+        if (buyNowItem) buyNowItem = null;
+        else CART = [];
+        updateCartBadge();
+        form.reset();
+        document.getElementById('checkout-province').dispatchEvent(new Event('change'));
+        document.querySelectorAll('.pay-option').forEach(function (option) { option.classList.remove('selected'); });
+        closeCheckout();
+        var toast = document.getElementById('order-toast');
+        toast.textContent = 'Order ' + result.reference + ' received successfully.';
         toast.classList.add('show');
-        setTimeout(function () { toast.classList.remove('show'); }, 3500);
+        setTimeout(function () { toast.classList.remove('show'); }, 6000);
+    } catch (error) {
+        errorBox.textContent = error.message || 'Network error. Please try again.';
+        errorBox.hidden = false;
+    } finally {
+        button.disabled = false;
+        button.textContent = 'Place Order';
     }
 }
 
@@ -547,7 +476,12 @@ function placeOrder() {
 document.addEventListener('DOMContentLoaded', function () {
     renderProducts();
     initFilters();
+    initAddressSelects();
     updateCartBadge();
+    loadCart().then(restorePendingAction);
+    document.querySelectorAll('input[name="payment_method"]').forEach(function (input) {
+        input.addEventListener('change', function () { selectPayment(input.closest('.pay-option')); });
+    });
 
     var modal = document.getElementById('product-modal');
     if (modal) {
@@ -555,6 +489,21 @@ document.addEventListener('DOMContentLoaded', function () {
             if (e.target === modal) closeModal();
         });
     }
+
+    var sizeGuide = document.getElementById('size-guide-modal');
+    sizeGuide.addEventListener('click', function (event) {
+        if (event.target === sizeGuide) closeSizeGuide();
+    });
+    document.getElementById('checkout-modal').addEventListener('click', function (event) {
+        if (event.target === this) closeCheckout();
+    });
+    document.addEventListener('keydown', function (event) {
+        if (event.key !== 'Escape') return;
+        if (sizeGuide.classList.contains('open')) closeSizeGuide();
+        else if (document.getElementById('checkout-modal').classList.contains('open')) closeCheckout();
+        else if (document.getElementById('cart-sidebar').classList.contains('open')) closeCartSidebar();
+        else if (modal.classList.contains('open')) closeModal();
+    });
 
     var overlay = document.getElementById('cart-overlay');
     if (overlay) overlay.addEventListener('click', closeCartSidebar);

@@ -1,0 +1,82 @@
+CREATE DATABASE IF NOT EXISTS bristol_shoes CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE bristol_shoes;
+
+CREATE TABLE IF NOT EXISTS users (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(160) NOT NULL,
+    email VARCHAR(190) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    role VARCHAR(20) NOT NULL DEFAULT 'customer',
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS products (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    category VARCHAR(20) NOT NULL,
+    type VARCHAR(100) NOT NULL,
+    name VARCHAR(160) NOT NULL,
+    price INT UNSIGNED NOT NULL,
+    original_price INT UNSIGNED NULL,
+    image_url TEXT NOT NULL,
+    images_json JSON NOT NULL,
+    sizes_json JSON NOT NULL,
+    unavailable_json JSON NOT NULL,
+    description TEXT NOT NULL,
+    is_sale BOOLEAN NOT NULL DEFAULT FALSE,
+    is_active BOOLEAN NOT NULL DEFAULT TRUE
+);
+
+CREATE TABLE IF NOT EXISTS orders (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT UNSIGNED NULL,
+    reference VARCHAR(20) NOT NULL UNIQUE,
+    first_name VARCHAR(80) NOT NULL,
+    last_name VARCHAR(80) NOT NULL,
+    email VARCHAR(190) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    city VARCHAR(100) NOT NULL,
+    province VARCHAR(100) NOT NULL,
+    postal_code VARCHAR(12) NOT NULL,
+    payment_method VARCHAR(30) NOT NULL,
+    payment_status VARCHAR(20) NOT NULL DEFAULT 'unpaid',
+    subtotal INT UNSIGNED NOT NULL,
+    shipping INT UNSIGNED NOT NULL,
+    total INT UNSIGNED NOT NULL,
+    status VARCHAR(20) NOT NULL DEFAULT 'pending',
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_orders_user FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE IF NOT EXISTS cart_items (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT UNSIGNED NOT NULL,
+    product_id INT UNSIGNED NOT NULL,
+    size SMALLINT UNSIGNED NOT NULL,
+    quantity TINYINT UNSIGNED NOT NULL DEFAULT 1,
+    UNIQUE KEY uniq_cart_item (user_id, product_id, size),
+    CONSTRAINT fk_cart_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    CONSTRAINT fk_cart_product FOREIGN KEY (product_id) REFERENCES products(id)
+);
+
+CREATE TABLE IF NOT EXISTS order_items (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    order_id BIGINT UNSIGNED NOT NULL,
+    product_id INT UNSIGNED NOT NULL,
+    product_name VARCHAR(160) NOT NULL,
+    size SMALLINT UNSIGNED NOT NULL,
+    quantity TINYINT UNSIGNED NOT NULL,
+    unit_price INT UNSIGNED NOT NULL,
+    line_total INT UNSIGNED NOT NULL,
+    CONSTRAINT fk_order_items_order FOREIGN KEY (order_id) REFERENCES orders(id),
+    CONSTRAINT fk_order_items_product FOREIGN KEY (product_id) REFERENCES products(id)
+);
+
+CREATE TABLE IF NOT EXISTS contact_messages (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(160) NOT NULL,
+    email VARCHAR(190) NOT NULL,
+    phone VARCHAR(20) NULL,
+    message TEXT NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);

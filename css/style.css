@@ -589,6 +589,16 @@ nav .wrap {
     min-height: 16px;
 }
 
+#contact-error {
+    padding: 12px 14px;
+    border-radius: 8px;
+    background: #fff0f0;
+    color: #9b1c1c;
+    font-size: 13px;
+    margin-bottom: 14px;
+}
+#contact-error[hidden] { display: none; }
+
 .info-item {
     display: flex;
     gap: 14px;
